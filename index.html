@@ -1,0 +1,462 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>6th year trip sort</title>
+        <meta name="description" content="website for sorting 6th year trips.">
+        <meta name="author" content="Vidminas">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/nav.css">
+        <link rel="stylesheet" href="css/form.css">
+        <link rel="stylesheet" href="css/table.css">
+        <link rel="stylesheet" href="css/list.css">
+        <link rel="stylesheet" href="css/trips.css">
+        <script type="text/javascript" src="lib/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="lib/Blob.js"></script>
+        <script type="text/javascript" src="lib/FileSaver.min.js"></script>
+        <script type="text/javascript" src="lib/js.storage.min.js"></script>
+        <script type="text/javascript" src="lib/jquery.populate.pack.js"></script>
+        <script type="text/javascript" src="js/form.js"></script>
+        <script type="text/javascript" src="js/list.js"></script>
+        <script type="text/javascript" src="js/trips.js"></script>
+        <script type="text/javascript" src="js/nav.js"></script>
+    </head>
+
+    <body>
+        <nav>
+            <ul>
+                <li><a href="#" class="tab" name="Add" onclick="openTab(event, 'Add')">Add person</a></li>
+                <li><a href="#" class="tab" name="List" onclick="openTab(event, 'List')">View all people</a></li>
+                <li><a href="#" class="tab" name="Trips" onclick="openTab(event, 'Trips')">Trip lists</a></li>
+                <li><a href="#" class="tool" onclick="saveData()">Save to localstorage</a></li>
+                <li><a href="#" class="tool" onclick="loadData()">Load from localstorage</a></li>
+                <li><a href="#" class="tool" onclick="downloadData()">Download to disk</a></li>
+                <li><a href="#" class="tool" onclick="openUploadDialog()">Upload from disk</a></li>
+            </ul>
+        </nav>
+
+        <div id="Add" class="tabContent">
+            <form id="personForm" method="POST" onsubmit="return false">
+                <fieldset class="left">
+                    <legend>Personal information</legend>
+                    <label class="field" for="firstName">First name:</label>
+                    <input type="text" name="firstName" autofocus />
+                    <br>
+                    <label class="field" for="lastName">Last name:</label>
+                    <input type="text" name="lastName" />
+                    <br>
+                    <label class="field" for="class">Class:</label>
+                    <select name="class"></select>
+                    <br>
+                    <label class="field" for="birthDate">Date of birth:</label>
+                    <br>
+                    <input type="date" name="birthDate" value="1999-01-01" />
+                    <br><br>
+                    <label class="field" for="gender">Gender:</label>
+                    <br>
+                    <input type="radio" name="gender" value="male" />
+                    <span>Male</span>
+                    <input type="radio" name="gender" value="female" />
+                    <span>Female</span>
+                    <input type="radio" name="gender" value="other" />
+                    <span>Other</span>
+                    <br><br>
+                    <label class="field" for="nationality">Nationality:</label>
+                    <select name="nationality"></select>
+                    <br>
+                    <label class="field" for="address">Address:</label>
+                    <input type="text" name="address" />
+                    <br>
+                    <label class="field" for="telephone">Telephone number:</label>
+                    <input type="text" name="telephone" value="+352" />
+                </fieldset>
+
+                <fieldset class="right">
+                    <legend>Trip details</legend>
+
+                    <div class="tripSlider">
+                        <label class="field" for="tripCataluna">Cataluna: </label>
+                        <input class="tripSliderRange" type="range" name="tripCataluna" value="0" min="0" max="10">
+                        <span class="tripSliderValue">0</span>
+                    </div>
+
+                    <div class="tripSlider">
+                        <label class="field" for="tripBanyuls">Banyuls: </label>
+                        <input class="tripSliderRange" type="range" name="tripBanyuls" value="0" min="0" max="10">
+                        <span class="tripSliderValue">0</span>
+                    </div>
+
+                    <div class="tripSlider">
+                        <label class="field" for="tripElba">Elba: </label>
+                        <input class="tripSliderRange" type="range" name="tripElba" value="0" min="0" max="10">
+                        <span class="tripSliderValue">0</span>
+                    </div>
+
+                    <div class="tripSlider">
+                        <label class="field" for="tripFuerteventura">Fuerteventura: </label>
+                        <input class="tripSliderRange" type="range" name="tripFuerteventura" value="0" min="0" max="10">
+                        <span class="tripSliderValue">0</span>
+                    </div>
+
+                    <div class="tripSlider">
+                        <label class="field" for="tripKalymnos">Kalymnos: </label>
+                        <input class="tripSliderRange" type="range" name="tripKalymnos" value="0" min="0" max="10">
+                        <span class="tripSliderValue">0</span>
+                    </div>
+
+                    <div class="tripSlider">
+                        <label class="field" for="tripIreland">Ireland: </label>
+                        <input class="tripSliderRange" type="range" name="tripIreland" value="0" min="0" max="10">
+                        <span class="tripSliderValue">0</span>
+                    </div>
+
+                    <div class="tripSlider">
+                        <label class="field" for="tripMallorca">Mallorca: </label>
+                        <input class="tripSliderRange" type="range" name="tripMallorca" value="0" min="0" max="10">
+                        <span class="tripSliderValue">0</span>
+                    </div>
+
+                    <div class="tripSlider">
+                        <label class="field" for="tripTenerife">Tenerife: </label>
+                        <input class="tripSliderRange" type="range" name="tripTenerife" value="0" min="0" max="10">
+                        <span class="tripSliderValue">0</span>
+                    </div>
+
+                    <div class="tripSlider">
+                        <label class="field" for="tripLuxembourg">Luxembourg: </label>
+                        <input class="tripSliderRange" type="range" name="tripLuxembourg" value="0" min="0" max="10">
+                        <span class="tripSliderValue">0</span>
+                    </div>
+
+                    <label class="field" for="partner">Partner name(s) (optional):</label>
+                    <br>
+                    <input type="text" name="partner1" />
+                    <input type="text" name="partner2" />
+
+                    <div id="formMessageBox" class="messageBox"><br></div>
+                    <button onclick="saveTemplate()">Save form to template!</button>
+                    <button onclick="loadTemplate()">Load form from template!</button>
+                    <button onclick="submitForm()">Add this person!</button>
+                </fieldset>
+            </form>
+        </div>
+
+        <div id="List" class="tabContent">
+            <button onclick="validatePartners()">Validate Partners</button>
+            <br><br>
+            <table id="listTable">
+                <thead>
+                    <tr>
+                        <th> ID </th>
+                        <th> First Name </th>
+                        <th> Last Name </th>
+                        <th> Class </th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <br><br><br><br>
+            <div>
+                Validation legend:
+                <ul>
+                    <li style="background: lightgreen">Light green = ok</li>
+                    <li style="background: lightblue">Light blue = no partner</li>
+                    <li style="background: red">Red = partner not found in list</li>
+                    <li style="background: crimson">Crimson = non mutual partners</li>
+                    <li style="background: orange">Orange = partners with different choices</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="Trips" class="tabContent">
+            <button onclick="TripSort.initialSort()">Initial sort</button>
+            <button onclick="TripSort.groupPartners()">Group partners</button>
+            <button onclick="TripSort.genderMix()">Mix genders</button>
+            <button onclick="TripSort.overflow()">Redistribute overflows</button>
+            <button onclick="TripSort.underflow()">Redistribute underflows</button>
+            <br><br>
+            <div id="tripMessageBox" class="messageBox"><br></div>
+            <table id="tripTable">
+                <thead>
+                    <tr>
+                        <th> Cataluna </th>
+                        <th> Banyuls </th>
+                        <th> Elba </th>
+                        <th> Fuerteventura </th>
+                        <th> Kalymnos </th>
+                        <th> Ireland </th>
+                        <th> Mallorca </th>
+                        <th> Tenerife </th>
+                        <th> Luxembourg </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul class="column" id="tripCatalunaStatistics"></ul>
+                        </td>
+                        <td>
+                            <ul class="column" id="tripBanyulsStatistics"></ul>
+                        </td>
+                        <td>
+                            <ul class="column" id="tripElbaStatistics"></ul>
+                        </td>
+                        <td>
+                            <ul class="column" id="tripFuerteventuraStatistics"></ul>
+                        </td>
+                        <td>
+                            <ul class="column" id="tripKalymnosStatistics"></ul>
+                        </td>
+                        <td>
+                            <ul class="column" id="tripIrelandStatistics"></ul>
+                        </td>
+                        <td>
+                            <ul class="column" id="tripMallorcaStatistics"></ul>
+                        </td>
+                        <td>
+                            <ul class="column" id="tripTenerifeStatistics"></ul>
+                        </td>
+                        <td>
+                            <ul class="column" id="tripLuxembourgStatistics"></ul>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <ul class="column" id="tripCataluna"></ul>
+                        </td>
+                        <td>
+                            <ul class="column" id="tripBanyuls"></ul>
+                        </td>
+                        <td>
+                            <ul class="column" id="tripElba"></ul>
+                        </td>
+                        <td>
+                            <ul class="column" id="tripFuerteventura"></ul>
+                        </td>
+                        <td>
+                            <ul class="column" id="tripKalymnos"></ul>
+                        </td>
+                        <td>
+                            <ul class="column" id="tripIreland"></ul>
+                        </td>
+                        <td>
+                            <ul class="column" id="tripMallorca"></ul>
+                        </td>
+                        <td>
+                            <ul class="column" id="tripTenerife"></ul>
+                        </td>
+                        <td>
+                            <ul class="column" id="tripLuxembourg"></ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="editDialog" class="overlay">
+            <div class="dialog">
+                <span class="close" onclick="closeEditDialog()">x</span>
+                <p>Edit Person Details</p>
+                <form id="personDetails" method="POST" onsubmit="return false">
+                    <ul onclick="switchForm()">
+                        <li><a id="personTab1" class="active" href="#">Personal Info</a></li>
+                        <li><a id="personTab2" href="#">Trip Ratings</a></li>
+                    </ul>
+                    <div id="person1">
+                        <input type="text" name="firstName" placeholder="First Name" />
+                        <br>
+                        <input type="text" name="lastName" placeholder="Last Name" />
+                        <br>
+                        <select name="class"></select>
+                        <br>
+                        <input type="date" name="birthDate" />
+                        <br><br>
+                        <input type="radio" name="gender" value="male" />
+                        <span>Male</span>
+                        <input type="radio" name="gender" value="female" />
+                        <span>Female</span>
+                        <input type="radio" name="gender" value="other" />
+                        <span>Other</span>
+                        <br><br>
+                        <select name="nationality"></select>
+                        <br>
+                        <input type="text" name="address" placeholder="Address" />
+                        <br>
+                        <input type="text" name="telephone" placeholder="Telephone" />
+                        <br>
+                        <input id="partnerName1" type="text" name="partner1" placeholder="Partner 1" />
+                        <button id="findPartner" onclick="findPartnerDetails(1)">Find partner!</button>
+                        <input id="partnerName2" type="text" name="partner2" placeholder="Partner 2" />
+                        <button id="findPartner" onclick="findPartnerDetails(2)">Find partner!</button>
+
+                    </div>
+
+                    <div id="person2">
+                        <div class="tripSlider">
+                            <label class="field" for="tripCataluna">Cataluna: </label>
+                            <input class="tripSliderRange" type="range" name="tripCataluna" value="0" min="0" max="10">
+                            <span class="tripSliderValue">0</span>
+                        </div>
+
+                        <div class="tripSlider">
+                            <label class="field" for="tripBanyuls">Banyuls: </label>
+                            <input class="tripSliderRange" type="range" name="tripBanyuls" value="0" min="0" max="10">
+                            <span class="tripSliderValue">0</span>
+                        </div>
+
+                        <div class="tripSlider">
+                            <label class="field" for="tripElba">Elba: </label>
+                            <input class="tripSliderRange" type="range" name="tripElba" value="0" min="0" max="10">
+                            <span class="tripSliderValue">0</span>
+                        </div>
+
+                        <div class="tripSlider">
+                            <label class="field" for="tripFuerteventura">Fuerteventura: </label>
+                            <input class="tripSliderRange" type="range" name="tripFuerteventura" value="0" min="0" max="10">
+                            <span class="tripSliderValue">0</span>
+                        </div>
+
+                        <div class="tripSlider">
+                            <label class="field" for="tripKalymnos">Kalymnos: </label>
+                            <input class="tripSliderRange" type="range" name="tripKalymnos" value="0" min="0" max="10">
+                            <span class="tripSliderValue">0</span>
+                        </div>
+
+                        <div class="tripSlider">
+                            <label class="field" for="tripIreland">Ireland: </label>
+                            <input class="tripSliderRange" type="range" name="tripIreland" value="0" min="0" max="10">
+                            <span class="tripSliderValue">0</span>
+                        </div>
+
+                        <div class="tripSlider">
+                            <label class="field" for="tripMallorca">Mallorca: </label>
+                            <input class="tripSliderRange" type="range" name="tripMallorca" value="0" min="0" max="10">
+                            <span class="tripSliderValue">0</span>
+                        </div>
+
+                        <div class="tripSlider">
+                            <label class="field" for="tripTenerife">Tenerife: </label>
+                            <input class="tripSliderRange" type="range" name="tripTenerife" value="0" min="0" max="10">
+                            <span class="tripSliderValue">0</span>
+                        </div>
+
+                        <div class="tripSlider">
+                            <label class="field" for="tripLuxembourg">Luxembourg: </label>
+                            <input class="tripSliderRange" type="range" name="tripLuxembourg" value="0" min="0" max="10">
+                            <span class="tripSliderValue">0</span>
+                        </div>
+                    </div>
+                    <br>
+                    <button onclick="savePerson(event)">Save!</button>
+                    <button onclick="deletePerson(event)">Delete!</button>
+                </form>
+                <form id="partnerDetails" method="POST" onsubmit="return false">
+                    <ul onclick="switchForm()">
+                        <li><a id="partnerTab1" class="active" href="#">Personal Info</a></li>
+                        <li><a id="partnerTab2" href="#">Trip Ratings</a></li>
+                    </ul>
+                    <div id="partner1">
+                        <input type="text" name="firstName" disabled />
+                        <br>
+                        <input type="text" name="lastName" disabled />
+                        <br>
+                        <select name="class" disabled></select>
+                        <br>
+                        <input type="date" name="birthDate" disabled />
+                        <br><br>
+                        <input type="radio" name="gender" value="male" disabled />
+                        <span>Male</span>
+                        <input type="radio" name="gender" value="female" disabled />
+                        <span>Female</span>
+                        <input type="radio" name="gender" value="other" disabled />
+                        <span>Other</span>
+                        <br><br>
+                        <select name="nationality" disabled><select>
+                        <br>
+                        <input type="text" name="address" disabled />
+                        <br>
+                        <input type="text" name="telephone" disabled />
+                        <br>
+                        <input type="text" name="partner1" disabled />
+                        <input type="text" name="partner2" disabled />
+                    </div>
+                    <div id="partner2">
+                        <div class="tripSlider">
+                            <label class="field" for="tripCataluna">Cataluna: </label>
+                            <input class="tripSliderRange" type="range" name="tripCataluna" value="0" min="0" max="10" disabled>
+                            <span class="tripSliderValue">0</span>
+                        </div>
+
+                        <div class="tripSlider">
+                            <label class="field" for="tripBanyuls">Banyuls: </label>
+                            <input class="tripSliderRange" type="range" name="tripBanyuls" value="0" min="0" max="10" disabled>
+                            <span class="tripSliderValue">0</span>
+                        </div>
+
+                        <div class="tripSlider">
+                            <label class="field" for="tripElba">Elba: </label>
+                            <input class="tripSliderRange" type="range" name="tripElba" value="0" min="0" max="10" disabled>
+                            <span class="tripSliderValue">0</span>
+                        </div>
+
+                        <div class="tripSlider">
+                            <label class="field" for="tripFuerteventura">Fuerteventura: </label>
+                            <input class="tripSliderRange" type="range" name="tripFuerteventura" value="0" min="0" max="10" disabled>
+                            <span class="tripSliderValue">0</span>
+                        </div>
+
+                        <div class="tripSlider">
+                            <label class="field" for="tripKalymnos">Kalymnos: </label>
+                            <input class="tripSliderRange" type="range" name="tripKalymnos" value="0" min="0" max="10" disabled>
+                            <span class="tripSliderValue">0</span>
+                        </div>
+
+                        <div class="tripSlider">
+                            <label class="field" for="tripIreland">Ireland: </label>
+                            <input class="tripSliderRange" type="range" name="tripIreland" value="0" min="0" max="10" disabled>
+                            <span class="tripSliderValue">0</span>
+                        </div>
+
+                        <div class="tripSlider">
+                            <label class="field" for="tripMallorca">Mallorca: </label>
+                            <input class="tripSliderRange" type="range" name="tripMallorca" value="0" min="0" max="10" disabled>
+                            <span class="tripSliderValue">0</span>
+                        </div>
+
+                        <div class="tripSlider">
+                            <label class="field" for="tripTenerife">Tenerife: </label>
+                            <input class="tripSliderRange" type="range" name="tripTenerife" value="0" min="0" max="10" disabled>
+                            <span class="tripSliderValue">0</span>
+                        </div>
+
+                        <div class="tripSlider">
+                            <label class="field" for="tripLuxembourg">Luxembourg: </label>
+                            <input class="tripSliderRange" type="range" name="tripLuxembourg" value="0" min="0" max="10" disabled>
+                            <span class="tripSliderValue">0</span>
+                        </div>
+                    </div>
+                </form>
+                <div id="editMessageBox" class="messageBox"><br></div>
+            </div>
+        </div>
+
+        <div id="uploadDialog" class="overlay">
+            <div class="dialog">
+                <span class="close" onclick="closeUploadDialog()">×</span>
+                <p>Upload data from disk</p>
+                <input type="file" id="dataFile" />
+                <br><br>
+                <button onclick="uploadData()">Load!</button>
+                <br><br>
+                <div id="dialogMessageBox" class="messageBox" />
+            </div>
+        </div>
+
+        <script type="text/javascript" src="js/rangeSliders.js"></script>
+    </body>
+
+</html>

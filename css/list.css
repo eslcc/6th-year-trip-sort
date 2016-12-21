@@ -1,0 +1,123 @@
+table#listTable tr:hover
+{
+    background: #666;
+    color: #fff;
+}
+
+table#listTable tr td:first-child
+{
+    background: none;
+    font-weight: bold;
+}
+
+form input[type="text"][name="partner1"],
+form input[type="text"][name="partner2"]
+{
+    width: 85%;
+}
+
+form button#showPartner
+{
+    width: 15%;
+}
+
+form#personDetails
+{
+    display: inline-block;
+    float: left;
+    width: 47.5%;
+    height: 100%;
+    padding: 1%;
+    background: #0fb8ad; /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #0fb8ad 0%,#1fc8db 51%,#2cb5e8 75%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #0fb8ad 0%,#1fc8db 51%,#2cb5e8 75%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0fb8ad', endColorstr='#2cb5e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+form#partnerDetails
+{
+    display: none;
+    float: right;
+    width: 47.5%;
+    height: 100%;
+    padding: 1%;
+    background-color: #CCCCCC;
+}
+
+form#personDetails div#person2 .tripSliderRange,
+form#partnerDetails div#partner2 .tripSliderRange
+{
+    width: 50%;
+}
+
+form#personDetails div#person2 label.field,
+form#partnerDetails, div#partner2 label.field
+{
+    margin: 0;
+}
+
+form ul
+{
+    width: 100%;
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 2%;
+    display: inline-block;
+    background: #f6f8f9; /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #f6f8f9 0%, #e5ebee 50%, #d7dee3 51%, #f5f7f9 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #f6f8f9 0%,#e5ebee 50%,#d7dee3 51%,#f5f7f9 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #f6f8f9 0%,#e5ebee 50%,#d7dee3 51%,#f5f7f9 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f8f9', endColorstr='#f5f7f9',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+form#personDetails ul li a
+{
+    float: left;
+}
+
+form#partnerDetails ul li a
+{
+    float: right;
+}
+
+/* Style the links */
+form ul li a
+{
+    color: black;
+    text-align: center;
+    padding: 3% 5%;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 1em;
+}
+
+/* Change background color of links on hover */
+form ul li a:hover
+{
+    background-color: DarkGray;
+}
+
+/* Create an active/current tablink class */
+form ul li a.active
+{
+    color: FloralWhite;
+    background-color: DimGray;
+}
+
+div#person2,
+div#partner2
+{
+    display: none;
+}
+
+div#editMessageBox
+{
+    float: right;
+    width: 45%;
+    margin-top: 15%;
+    text-align: center;
+    padding: 1%;
+}

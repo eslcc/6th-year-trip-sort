@@ -1,0 +1,167 @@
+form fieldset
+{
+    width: 45%;
+    height: 100%;
+    padding: 1%;
+    background: linear-gradient(white 0%, lightgreen 20%);
+}
+
+form fieldset.left
+{
+    float: left;
+    margin-left: 2.5%;
+}
+
+form fieldset.right
+{
+    float: right;
+    margin-right: 2.5%;
+}
+
+form fieldset legend
+{
+    font-size: 2em;
+}
+
+form label.field
+{
+    padding-right: 10px;
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 1em;
+    display: inline-block;
+    min-width: 7em;
+}
+
+form input[type="text"], select
+{
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: none;
+    border-radius: 4px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+form fieldset input[type="text"][name="partner1"],
+form fieldset input[type="text"][name="partner2"]
+{
+    width: 45%;
+}
+
+form button
+{
+    padding: 1%;
+    background: white;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+::-webkit-inner-spin-button
+{
+    display: none;
+}
+
+.tripSlider
+{
+    margin-bottom: 1%;
+}
+
+.tripSliderRange
+{
+    -webkit-appearance: none;
+    width: 75%;
+    height: 10px;
+    border-radius: 5px;
+    background: #d7dcdf;
+    outline: none;
+}
+
+.tripSliderRange::-webkit-slider-thumb
+{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #2c3e50;
+    cursor: pointer;
+    -webkit-transition: background .15s ease-in-out;
+    transition: background .15s ease-in-out;
+}
+
+.tripSliderRange::-webkit-slider-thumb:hover
+{
+    background: #1abc9c;
+}
+
+.tripSliderRange:active::-webkit-slider-thumb
+{
+    background: #1abc9c;
+}
+
+.tripSliderRange::-moz-range-thumb
+{
+    width: 20px;
+    height: 20px;
+    border: 0;
+    border-radius: 50%;
+    background: #2c3e50;
+    cursor: pointer;
+    -webkit-transition: background .15s ease-in-out;
+    transition: background .15s ease-in-out;
+}
+
+.tripSliderRange::-moz-range-thumb:hover
+{
+    background: #1abc9c;
+}
+
+.tripSliderRange:active::-moz-range-thumb
+{
+    background: #1abc9c;
+}
+
+.tripSliderValue
+{
+    display: inline-block;
+    position: relative;
+    width: 5%;
+    color: #fff;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 3px;
+    background: #2c3e50;
+    padding: 5px 10px;
+    margin-left: 8px;
+}
+
+.tripSliderValue:after
+{
+    position: absolute;
+    top: 8px;
+    left: -7px;
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-right: 7px solid #2c3e50;
+    border-bottom: 7px solid transparent;
+    content: '';
+}
+
+::-moz-range-track
+{
+    background: #d7dcdf;
+    border: 0;
+}
+
+input::-moz-focus-inner,
+input::-moz-focus-outer
+{
+    border: 0;
+}

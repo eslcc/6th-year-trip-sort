@@ -1,0 +1,7 @@
+.column
+{
+    display: inline-block;
+    padding: 2%;    list-style-type: disc;
+    text-align: justify;
+    max-width: 85%;
+}
